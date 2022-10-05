@@ -1,1 +1,0 @@
-print("CONNECTED TO TERMINAL.")

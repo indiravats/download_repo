@@ -15,4 +15,6 @@ for i in range(len(results_compact)):
   x = 'https://github.com/' + repo_list[i]
   location = '/Users/indiravats/PycharmProjects/download-repo/downloaded/repository_'+ folder_name[1]
   Repo.clone_from(x, location)
+  print("Downloading repository:", i+1)
+
 

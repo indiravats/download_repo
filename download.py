@@ -11,9 +11,13 @@ for i in range(len(results)):
 
 for i in range(len(results)):
   folder_name = repo_list[i].split('/')
-  x = 'https://github.com/' + repo_list[i]
-  location = '/data/indira/csl/download_repo/downloaded/'+ folder_name[1]
-  Repo.clone_from(x, location)
-  print("Downloading repository:", i+1)
+  file_names = os.listdir('/data/indira/csl/download_repo/downloaded/')
+
+  
+  if folder_name[1] not in file_names:
+    x = 'https://github.com/' + repo_list[i]
+    location = '/data/indira/csl/download_repo/downloaded/'+ folder_name[1]
+    Repo.clone_from(x, location)
+    print("Downloading repository:", i+1)
 
 

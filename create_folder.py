@@ -2,7 +2,7 @@ from pydriller import Repository
 import os
 import pandas as pd
 
-BASE_DIR = "/content/" #will be /data/indira/csl/download_repo
+BASE_DIR = "/data/indira/csl/download_repo/"
 DATASET_DIR = os.path.join(BASE_DIR, "results.csv")
 DOWNLOADED_DIR = os.path.join(BASE_DIR, "downloaded")
 ANALYZED_DIR = os.path.join(BASE_DIR, "analyzed_repo")

@@ -6,7 +6,7 @@ import errno
 BASE_DIR = "/data/indira/csl/download_repo/" 
 DATASET_DIR = os.path.join(BASE_DIR, "results.csv")
 DOWNLOADED_DIR = os.path.join(BASE_DIR, "downloaded")
-ANALYZED_DIR = os.path.join(BASE_DIR, "test")
+ANALYZED_DIR = os.path.join(BASE_DIR, "analyzed_repo")
 
 results = pd.read_csv(DATASET_DIR)
 remove = results['name'].str.split('/', expand=True)[results['name'].str.split('/', expand=True).duplicated([1], keep='last')]

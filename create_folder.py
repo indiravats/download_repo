@@ -1,11 +1,12 @@
 from pydriller import Repository
 import os
 import pandas as pd
+import errno
 
-BASE_DIR = "/data/indira/csl/download_repo/"
+BASE_DIR = "/data/indira/csl/download_repo/" 
 DATASET_DIR = os.path.join(BASE_DIR, "results.csv")
 DOWNLOADED_DIR = os.path.join(BASE_DIR, "downloaded")
-ANALYZED_DIR = os.path.join(BASE_DIR, "analyzed_repo")
+ANALYZED_DIR = os.path.join(BASE_DIR, "test")
 
 results = pd.read_csv(DATASET_DIR)
 remove = results['name'].str.split('/', expand=True)[results['name'].str.split('/', expand=True).duplicated([1], keep='last')]
@@ -32,8 +33,14 @@ for i in folder_name:
 
 os.chdir(ANALYZED_DIR)
 
-for i in op_folder_names:
-  !mkdir $i 
+try:
+  for i in op_folder_names:
+    new_dir = os.path.join(ANALYZED_DIR, i)
+    os.mkdir(new_dir)
+except OSError as exc:
+  if exc.errno != errno.EEXIST:
+    raise
+  pass
 
 for i in repo_links:
   if i.split('/')[-1] in results_final.repo_name.tolist():

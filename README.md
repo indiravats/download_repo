@@ -1,4 +1,5 @@
-# download_repo
+Criteria for the selection of repositories:
+
 Language -- Java
 
 Number of commits -- 500

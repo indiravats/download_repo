@@ -55,7 +55,7 @@ def listdir_nohidden(path):
 
 BASE_PATH = '/data/indira/csl/download_repo' 
 DESIGNITEJAVA_CONSOLE_PATH= os.path.join(BASE_PATH, 'DesigniteJava.jar')
-JAVA_RESULTS_PATH = os.path.join(BASE_PATH, 'analyzed')
+JAVA_RESULTS_PATH = os.path.join(BASE_PATH, 'analyzed_repositories')
 DOWNLOAD_PATH = os.path.join(BASE_PATH, 'downloaded')
 
 list_of_dirs = listdir_nohidden(DOWNLOAD_PATH)

@@ -1,6 +1,13 @@
 import os
 import pandas as pd
 
+def listdir_nohidden(path):
+  dirlist = []
+  for f in os.listdir(path):
+    if not f.startswith('.'):
+      dirlist.append(f)
+  return dirlist
+
 BASE_PATH = '/data/indira/csl/download_repo/'
 ANALYZED_PATH = os.path.join(BASE_PATH, 'analyzed_repositories')
 DOWNLOAD_PATH = os.path.join(BASE_PATH, 'downloaded')
@@ -10,11 +17,13 @@ results = pd.read_csv('results.csv')
 for i in range(len(results)):
   repo_list.append(results.name[i].split('/')[1])
 
-total_repos = repo_list
-downloaded_dirs = os.listdir(DOWNLOAD_PATH)
-analyzed_dirs = os.listdir(ANALYZED_PATH)
+print("Total repositories:", len(repo_list))
+downloaded_dirs = listdir_nohidden(DOWNLOAD_PATH)
+print("Downloaded repositories:", len(downloaded_dirs))
+analyzed_dirs = listdir_nohidden(ANALYZED_PATH)
+print("Analyzed repositores:", len(analyzed_dirs))
 
-not_downloaded = [x for x in total_repos if x not in downloaded_dirs]
+not_downloaded = [x for x in repo_list if x not in downloaded_dirs]
 not_analyzed = [x for x in downloaded_dirs if x not in analyzed_dirs]
 
 number_not_downloaded = len(not_downloaded)

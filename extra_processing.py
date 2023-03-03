@@ -5,7 +5,7 @@ import git
 import multiprocessing
 
 links = ['https://github.com/alibaba/druid','https://github.com/qaprosoft/carina', 'https://github.com/syncthing/syncthing-android', 'https://github.com/exercism/java', 'https://github.com/thealgorithms/java', 'https://github.com/csploit/android','https://github.com/irisshaders/iris']
-file_names = os.listdir('/Users/indiravats/desktop/smell_evolution/downloaded/')
+file_names = os.listdir('/data/indira/csl/download_repo/downloaded/')
 
 
 extra_names = []
@@ -18,7 +18,7 @@ i = 0
 j = 0
 if extra_names[i] not in file_names:
   for link in links:
-      location = '/Users/indiravats/desktop/smell_evolution/downloaded/'+ extra_names[i]
+      location = '/data/indira/csl/download_repo/downloaded/'+ extra_names[i]
       i = i+1
       Repo.clone_from(link, location)
       print("Downloading repository:", j+1) 
@@ -65,8 +65,7 @@ def analyze_java_repo(folder_path, folder_name):
     _build_java_project(folder_path)
     _run_designite_java(folder_path, out_path)
 
-#JAVA_HOME = "/Library/Java/Home/bin/java"
-JAVA_HOME = '/Users/indiravats/Desktop/jdk-19.0.2/bin/java'
+JAVA_HOME = '/usr/bin/java'
 
 def listdir_nohidden(path):
   dirlist = []
@@ -75,7 +74,7 @@ def listdir_nohidden(path):
       dirlist.append(f)
   return dirlist
 
-BASE_PATH = '/Users/indiravats/Desktop/smell_evolution'
+BASE_PATH = '/data/indira/csl/download_repo'
 DESIGNITEJAVA_CONSOLE_PATH= os.path.join(BASE_PATH, 'DesigniteJava.jar')
 JAVA_RESULTS_PATH = os.path.join(BASE_PATH, 'analyzed')
 DOWNLOAD_PATH = os.path.join(BASE_PATH, 'downloaded')
@@ -83,8 +82,7 @@ DOWNLOAD_PATH = os.path.join(BASE_PATH, 'downloaded')
 list_of_dirs = listdir_nohidden(DOWNLOAD_PATH)
 
 chunked_list_of_dirs = list()
-#CHANGE TO 125
-chunk_size = 1 
+chunk_size = 125
 
 for i in range(0, len(list_of_dirs), chunk_size):
    chunked_list_of_dirs.append(list_of_dirs[i:i+chunk_size])

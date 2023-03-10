@@ -5,7 +5,7 @@ import multiprocessing
 
 def _build_java_project(dir_path):
     print("Attempting compilation...")
-    os.environ['JAVA_HOME']
+    #os.environ['JAVA_HOME']
     is_compiled = False
     pom_path = os.path.join(dir_path, 'pom.xml')
     if os.path.exists(pom_path):
@@ -44,7 +44,7 @@ def analyze_java_repo(folder_path, folder_name):
     _build_java_project(folder_path)
     _run_designite_java(folder_path, out_path)
 
-JAVA_HOME = "/Library/Java/Home/bin/java"
+JAVA_HOME = '/usr/bin/java'
 
 def listdir_nohidden(path):
   dirlist = []

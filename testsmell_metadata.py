@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 
-ANALYSED_PATH = '/data/indira/csl/download_repo/maven_analyzed/'
-RESULTS_PATH = '/data/indira/csl/download_repo/maven_result/'
+ANALYSED_PATH = '/data/indira/csl/download_repo/test_analyzed/'
+RESULTS_PATH = '/data/indira/csl/download_repo/test_result/'
 
 def listdir_nohidden(path):
   dirlist = []
